@@ -1,0 +1,13 @@
+body,
+.component,
+.p-component {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    @include reset-list;
+}

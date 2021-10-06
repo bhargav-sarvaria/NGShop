@@ -1,0 +1,9 @@
+<!-- <div class="featured-products" data-aos="fade-left"> -->
+<div class="featured-products">
+    <h3>Featured Products</h3>
+    <div class="grid">
+        <div #elementToCheck class="col featured-products-col" *ngFor = "let product of featuredProducts">
+            <products-product-item [product] = "product"></products-product-item>
+        </div>
+    </div>
+</div>

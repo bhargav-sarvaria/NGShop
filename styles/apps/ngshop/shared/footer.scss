@@ -1,0 +1,23 @@
+footer {
+    height: 100px;
+    font-family: "Open Sans", sans-serif !important;
+    background-color: var(--yellow-100);
+    min-height: 50px;
+    padding: 10px 25px;
+    width: 100%;
+    margin-top: 25px;
+    align-items: center;
+
+    .footer-wrapper {
+        padding: 0 9% 0px  9%;
+        height: 100%;
+        align-items: center;
+
+        .social {
+            text-align: right;
+            .nav {
+                justify-content: flex-end;
+            }
+        }
+    }
+}

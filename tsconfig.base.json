@@ -1,0 +1,33 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@env/*": ["environments/*"],
+            "@shreeshakti/orders": ["libs/orders/src/index.ts"],
+            "@shreeshakti/products": ["libs/products/src/index.ts"],
+            "@shreeshakti/ui": ["libs/ui/src/index.ts"],
+            "@shreeshakti/users": ["libs/users/src/index.ts"]
+        },
+        "strictPropertyInitialization": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "noImplicitReturns": false
+    },
+    "exclude": ["node_modules", "tmp"],
+    "angularCompilerOptions": {
+        "strictTemplates": true
+    }
+}

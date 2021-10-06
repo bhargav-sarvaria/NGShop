@@ -1,0 +1,61 @@
+header {
+
+    padding: 0 10px;
+    background-color: var(--surface-100);
+
+    .burger-menu{
+
+        .mat-icon {
+            font-size: 1.4rem;
+            color: var(--surface-700);
+            cursor: pointer;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        img{
+            width: 160px;
+        }
+    }
+
+    .logo-small {
+        padding-left: 15px;
+        color: $primary-color;
+        font-size: 1.3rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        margin-top: -5px;
+
+        .products-search {
+            width: 90%;
+        }
+    }
+
+    .tools {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grid {
+        .col-1, .col-2, .col-4, .col-6 {
+            padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+        }
+    }
+
+    // border-bottom: solid 0.3px var(--surface-700);
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.1);
+}

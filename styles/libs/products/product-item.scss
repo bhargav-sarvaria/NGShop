@@ -1,0 +1,45 @@
+.product-item {
+    &-wrapper {
+      background-color: var(--surface-200);
+      border: 1px solid var(--surface-300);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      min-height: 250px;
+      margin-top: 85px;
+    }
+  
+    .image {
+      max-width: 60%;
+      height: 150px;
+      margin-top: -85px;
+    }
+  
+    .name {
+      margin: 25px 0 0 0;
+      padding: 0 10px;
+      word-wrap: break-word;
+      text-align: center;
+      height: 50px;
+
+      h4 {
+        font-family: "Open Sans", sans-serif;
+        font-weight: bold;
+      }
+      
+    }
+  
+    .price {
+      color: $primary-color;
+      font-size: 1.2em;
+      margin: 0;
+    }
+  
+    .add-to-cart {
+      background-color: $primary-color;
+      border: 0;
+      border-radius: 15px;
+    }
+}

@@ -1,0 +1,69 @@
+// Base Config
+@import '~normalize.css/normalize.css';
+@import './base/colors.scss';
+@import './base/fonts.scss';
+@import './base/mixins.scss';
+
+// @import '~bootstrap/scss/bootstrap.scss';
+
+// Libraries
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/saga-blue/theme.css';
+@import '~primeng/resources/primeng.min.css';
+@import '~primeflex/primeflex.css';
+@import '~animate.css/animate.css';
+@import './base/configuration.scss';
+
+
+// Pages
+@import './apps/ngshop/pages/home-page.scss';
+@import './apps/ngshop/pages/product-list-page.scss';
+
+// Shared
+@import './apps/ngshop/shared/footer.scss';
+@import './apps/ngshop/shared/header.scss';
+@import './apps/ngshop/shared/nav.scss';
+@import './apps/ngshop/shared/sidenav-list.scss';
+
+// libs
+@import './libs/products/products.scss';
+@import './libs/ui/ui.scss';
+@import './libs/orders/order.scss';
+@import './libs/users/users.scss';
+
+.container {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--surface-100);
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+    height: 100%;
+    background-color: var(--surface-100) !important;
+}
+
+mat-sidenav-content {
+    overflow: overlay !important;
+    max-height: 100%;
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+main {
+    background-color: var(--surface-100);
+    margin: 120px 9% 0px  9%;
+}
+
+.site-header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 100;
+    transition: all .5s ease;
+}
+.hide {
+    top: -101px;
+}
