@@ -19,6 +19,7 @@ export class AuthService {
     @Inject(ENVIRONMENT) private env: Environment
   ){
     this.apiURLUsers = this.env.apiUrl + 'users';
+    console.log(this.apiURLUsers);
    }
 
   login(email: string, password: string): Observable<User> {

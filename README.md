@@ -2,7 +2,7 @@
 
 # Shreeshakti
 
-nx build ngshop --output-path docs --base-href /Shreeshakti/
+nx build admin --prod --output-path docs --base-href /Shreeshakti/
 
 This project was generated using [Nx](https://nx.dev).
 
