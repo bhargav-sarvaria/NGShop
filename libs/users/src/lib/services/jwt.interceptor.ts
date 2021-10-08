@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { Environment, ENVIRONMENT } from '@shreeshakti/environment';
+
 import {
   HttpRequest,
   HttpHandler,
@@ -7,18 +9,21 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalstorageService } from './localstorage.service';
-import { environment } from '@env/environment';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
+  apiUrl: string;
   constructor(
-    private localStorageService: LocalstorageService
-  ) {}
+    private localStorageService: LocalstorageService,
+    @Inject(ENVIRONMENT) private env: Environment
+  ) {
+    this.apiUrl = this.env.apiUrl;
+  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.localStorageService.getToken();
-    const isAPIUrl = request.url.startsWith(environment.apiUrl);
+    const isAPIUrl = request.url.startsWith(this.apiUrl);
 
     if(token && isAPIUrl) {
       request = request.clone({

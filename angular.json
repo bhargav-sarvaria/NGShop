@@ -26,8 +26,8 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "5mb",
+                                    "maximumError": "3mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
@@ -143,8 +143,8 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "5mb",
+                                    "maximumError": "3mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
@@ -232,6 +232,39 @@
                 }
             }
         },
+        "environment": {
+            "projectType": "library",
+            "root": "libs/environment",
+            "sourceRoot": "libs/environment/src",
+            "prefix": "shreeshakti",
+            "architect": {
+                "build": {
+                    "builder":"@nrwl/linter:eslint",
+                    
+                    "outputs": ["dist/libs/environment"],
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/environment/src/**/*.ts",
+                            "libs/environment/src/**/*.html"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/environment"],
+                    "options": {
+                        "jestConfig": "libs/environment/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/environment/src/**/*.ts", "libs/environment/src/**/*.html"]
+                    }
+                }
+            }
+        },
         "orders": {
             "projectType": "library",
             "root": "libs/orders",
@@ -239,20 +272,15 @@
             "prefix": "orders",
             "architect": {
                 "build": {
-                    "builder": "@nrwl/angular:ng-packagr-lite",
+                    "builder":"@nrwl/linter:eslint",
+                    
                     "outputs": ["dist/libs/orders"],
                     "options": {
-                        "project": "libs/orders/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "libs/orders/tsconfig.lib.prod.json"
-                        },
-                        "development": {
-                            "tsConfig": "libs/orders/tsconfig.lib.json"
-                        }
-                    },
-                    "defaultConfiguration": "production"
+                        "lintFilePatterns": [
+                            "libs/orders/src/**/*.ts",
+                            "libs/orders/src/**/*.html"
+                        ]
+                    }
                 },
                 "test": {
                     "builder": "@nrwl/jest:jest",
@@ -276,6 +304,17 @@
             "sourceRoot": "libs/products/src",
             "prefix": "shreeshakti",
             "architect": {
+                "build": {
+                    "builder":"@nrwl/linter:eslint",
+                    
+                    "outputs": ["dist/libs/products"],
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/products/src/**/*.ts",
+                            "libs/products/src/**/*.html"
+                        ]
+                    }
+                },
                 "test": {
                     "builder": "@nrwl/jest:jest",
                     "outputs": ["coverage/libs/products"],
@@ -298,6 +337,17 @@
             "sourceRoot": "libs/ui/src",
             "prefix": "shreeshakti",
             "architect": {
+                "build": {
+                    "builder":"@nrwl/linter:eslint",
+                    
+                    "outputs": ["dist/libs/ui"],
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/ui/src/**/*.ts",
+                            "libs/ui/src/**/*.html"
+                        ]
+                    }
+                },
                 "test": {
                     "builder": "@nrwl/jest:jest",
                     "outputs": ["coverage/libs/ui"],
@@ -321,20 +371,15 @@
             "prefix": "shreeshakti",
             "architect": {
                 "build": {
-                    "builder": "@nrwl/angular:ng-packagr-lite",
+                    "builder":"@nrwl/linter:eslint",
+                    
                     "outputs": ["dist/libs/users"],
                     "options": {
-                        "project": "libs/users/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "libs/users/tsconfig.lib.prod.json"
-                        },
-                        "development": {
-                            "tsConfig": "libs/users/tsconfig.lib.json"
-                        }
-                    },
-                    "defaultConfiguration": "production"
+                        "lintFilePatterns": [
+                            "libs/users/src/**/*.ts",
+                            "libs/users/src/**/*.html"
+                        ]
+                    }
                 },
                 "test": {
                     "builder": "@nrwl/jest:jest",

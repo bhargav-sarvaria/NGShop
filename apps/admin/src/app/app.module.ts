@@ -43,7 +43,8 @@ import {FieldsetModule} from 'primeng/fieldset';
 import { JwtInterceptor, UsersModule } from '@shreeshakti/users';
 import { AppRoutingModule } from './app-routing.module';
 
-
+import { ENVIRONMENT } from '@shreeshakti/environment';
+import { environment } from '@env/environment';
 
 const UX_MODULE = [
   CardModule,
@@ -85,7 +86,8 @@ const UX_MODULE = [
       MessageService,
       Location,
       ConfirmationService,
-      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+      { provide: ENVIRONMENT, useValue: environment }
     ],
     bootstrap: [AppComponent],
     exports: [

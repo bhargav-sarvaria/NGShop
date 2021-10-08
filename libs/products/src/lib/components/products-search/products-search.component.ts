@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'products-search',
@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class ProductsSearchComponent implements OnInit {
+export class ProductsSearchComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

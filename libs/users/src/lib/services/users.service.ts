@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { environment } from '@env/environment';
+import { Environment, ENVIRONMENT } from '@shreeshakti/environment';
 import * as countriesLib from 'i18n-iso-countries';
 import { UsersFacade } from '../state/users.facade';
 declare const require;
@@ -11,13 +11,15 @@ declare const require;
   providedIn: 'root'
 })
 export class UsersService {
-  apiURLUsers = environment.apiUrl + 'users';
+  apiURLUsers: string;
 
   constructor(
     private http: HttpClient,
-    private usersFacade: UsersFacade
+    private usersFacade: UsersFacade,
+    @Inject(ENVIRONMENT) private env: Environment
   ) {
     countriesLib.registerLocale(require('i18n-iso-countries/langs/en.json'));
+    this.apiURLUsers = env.apiUrl + 'users';
   }
 
   getUsers(): Observable<User[]> {

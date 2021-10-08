@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '@env/environment';
-import { User } from '@shreeshakti/users';
+import { User } from '../models/user';
 import { Observable } from 'rxjs';
+import { Environment, ENVIRONMENT } from '@shreeshakti/environment';
 import { LocalstorageService } from './localstorage.service';
 
 @Injectable({
@@ -11,12 +11,15 @@ import { LocalstorageService } from './localstorage.service';
 })
 export class AuthService {
 
-  apiURLUsers = environment.apiUrl + 'users';
+  apiURLUsers: string;
   constructor(
     private httpClient: HttpClient,
     private localStorageService: LocalstorageService,
-    private router: Router
-  ) { }
+    private router: Router,
+    @Inject(ENVIRONMENT) private env: Environment
+  ){
+    this.apiURLUsers = this.env.apiUrl + 'users';
+   }
 
   login(email: string, password: string): Observable<User> {
     return this.httpClient.post<User>(`${this.apiURLUsers}/login`, { email, password});

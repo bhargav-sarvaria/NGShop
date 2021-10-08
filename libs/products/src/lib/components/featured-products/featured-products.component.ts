@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service'
-import * as AOS from 'aos'; 
 
 @Component({
   selector: 'products-featured-products',
