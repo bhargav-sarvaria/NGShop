@@ -8,12 +8,15 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
+
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { UiModule } from '@shreeshakti/ui';
+import { ProductsClickOutsideDirective } from './components/products-search/click-outside.directive';
 
 const routes: Routes = [
   { path: 'products', component: ProductsListComponent},
@@ -30,10 +33,12 @@ const routes: Routes = [
     RatingModule,
     InputNumberModule,
     FormsModule,
+    ReactiveFormsModule,
     UiModule
   ],
   declarations: [
     ProductsSearchComponent,
+    ProductsClickOutsideDirective,
     CategoriesBannerComponent,
     ProductItemComponent,
     FeaturedProductsComponent,
@@ -46,7 +51,8 @@ const routes: Routes = [
     ProductItemComponent,
     FeaturedProductsComponent,
     ProductsListComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ProductsClickOutsideDirective
   ]
 })
 export class ProductsModule {}

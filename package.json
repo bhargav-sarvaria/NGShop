@@ -8,7 +8,9 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "lint": "nx workspace-lint && ng lint"
+    "lint": "nx workspace-lint && ng lint",
+    "build-prod-admin": "nx build admin --prod --output-path docs --base-href /Shreeshakti/",
+    "build-prod-ngshop": "nx build ngshop --prod --output-path docs --base-href /Shreeshakti/"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,10 @@
 <div class="products-search">
-    <i class="pi pi-search"></i>
-    <input class="products-search-input" type="text" name="search" id="search" placeholder="Find products">
-</div>
+    <form autocomplete="off" [formGroup]="searchForm" novalidate>
+        <input spellcheck="false" autocomplete="off" formControlName="search" class="products-search-input" type="text" name="search" id="search" placeholder="&#xF002;"/>
+        <div productsClickOutside (productsClickOutside)="toggleDropDown()" class="products-search-suggestions" *ngIf = "showDropdown" >
+            <div class="products-search-suggestions-options" *ngFor="let opt of results" (click) = "onClick(opt.id)">
+                {{opt.name}}
+            </div>
+        </div>
+    </form>
+</div>  

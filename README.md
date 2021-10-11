@@ -2,7 +2,7 @@
 
 # Shreeshakti
 
-nx build admin --prod --output-path docs --base-href /Shreeshakti/
+npm run build-prod-admin
 
 This project was generated using [Nx](https://nx.dev).
 

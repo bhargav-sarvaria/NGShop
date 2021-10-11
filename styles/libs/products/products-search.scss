@@ -1,32 +1,68 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 .products-search {
     display: flex;
-    border-radius: 10px;
+    border-radius: 3px;
     width: 100%;
     text-align: center;
     height: 35px;
-
-    padding: 0 10px;
     background-color: var(--surface-200);
 
-    .pi {
-        font-size: 1.4rem;
-        color: var(--surface-700);
-        cursor: pointer;
-        color: $primary-color;
-        margin-top: 6px;
+    form {
+        width: 100%;
+        ::placeholder {
+            font-size: 1rem;
+            color: var(--surface-700);
+            color: $primary-color;
+            text-align: left;
+        }
     }
 
     &-input {
+        width: 100%;
         font-size: 1rem;
+        height: 100%;
         background-color: transparent;
         color: var(--surface-800);
         border: 0;
-        margin-left: 10px;
-
+        font-family: 'Open Sans', sans-serif, 'FontAwesome' !important;
+        padding: 0 10px;
+        
         &:focus,
         &:active {
-            border: 0;
+            background-color: var(--surface-200);
+            border: 1px solid var(--surface-500);
+            border-radius: 3px;
             outline: none;
+            &::placeholder {
+                color: transparent;
+            }
         }
     }
+
+    &-suggestions {
+        position: inherit;
+        z-index: 1;
+        width: 100%;
+        max-height: 300px;
+        background-color: var(--surface-200);
+        border-radius: 0px 0px 3px 3px;
+        border: 1px solid var(--surface-300);
+        border-top: none;
+
+        &-options {
+            cursor: pointer;
+            font-size: 1rem;
+            background-color: transparent;
+            color: var(--surface-800);
+            padding: 10px 10px;
+            text-align: left;
+
+            &:focus,
+            &:hover,
+            &:active {
+                background-color: var(--surface-300);
+            }
+        }
+    }
+
 }
