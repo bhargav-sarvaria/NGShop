@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from '../../models/product';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -19,10 +19,11 @@ export class ProductsSearchComponent {
   searchForm: FormGroup;
   valueChange;
 
+  @Output() sidenavClose = new EventEmitter();
+  @Output() searchResults = new EventEmitter();
   constructor(private formBuilder: FormBuilder, private searchService: SearchService, private router: Router) { 
     this.initForm();
     this.onChanges();
-    this.showDropdown = true; 
   }
 
   onChanges(): void {
@@ -39,15 +40,17 @@ export class ProductsSearchComponent {
 
   toggleDropDown(){
     this.showDropdown = !this.showDropdown;
+    this.searchResults.emit(this.showDropdown);
   }
 
   search(query) {
     if(!query) return;
     query = query.trim();
-    if(query.length > 3) {
+    if(query.length > 2) {
       this.searchService.getResults(query).subscribe((res)=>{
         this.results = res;
         this.showDropdown = this.results.length > 0 ? true : false;
+        this.searchResults.emit(this.showDropdown);
       })
     }
   }
@@ -55,7 +58,8 @@ export class ProductsSearchComponent {
   onClick(id: string) {
     this.searchForm.reset();
     this.showDropdown = false;
+    this.sidenavClose.emit();
+    this.searchResults.emit(this.showDropdown);
     this.router.navigateByUrl(`products/${id}`);
   }
-
 }

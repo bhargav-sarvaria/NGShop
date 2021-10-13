@@ -9,11 +9,17 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class SidenavListComponent {
 
   @Output() sidenavClose = new EventEmitter();
-
-  constructor() { }
+  hasSearchResults: boolean;
+  constructor() { 
+    this.hasSearchResults = false;
+  }
 
   onSidenavClose(){
     this.sidenavClose.emit();
+  }
+
+  toggleSearchResults(event){
+    this.hasSearchResults = event;
   }
 
 }

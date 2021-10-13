@@ -1,0 +1,45 @@
+.home-page {
+    &-container {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        background-color: var(--surface-100);
+
+        mat-sidenav{
+        
+            height: 100%;
+            max-width: 250px;
+            width: 70%;
+            background-color: var(--surface-100) !important;
+            
+            &-container, &-content {
+                height: 100%;
+                background-color: var(--surface-100) !important;
+            }
+    
+            &-content {
+                overflow: overlay !important;
+                max-height: 100%;
+            }
+        }
+
+        main {
+            background-color: var(--surface-100);
+            margin: 120px 9% 0px  9%;
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 100;
+            transition: all .5s ease;
+        }
+        .hide {
+            top: -101px;
+        }
+    }
+}
+
+
+
