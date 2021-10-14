@@ -1,0 +1,26 @@
+.p-checkbox .p-checkbox-box.p-highlight {
+    border: 2px solid $primary-color !important;
+    background: $primary-color-light;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
+    background: $primary-color-light;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+    box-shadow: none;
+    border-color: unset;
+}
+
+.p-checkbox-box:hover {
+    border-color: $primary-color !important;
+    background: white;
+    // color: white;
+}
+
+p-checkbox.ng-dirty.ng-invalid > .p-checkbox > .p-checkbox-box {
+    border: 2px solid var(--surface-500) !important;
+    &:hover{
+        border: 2px solid $primary-color !important;
+    }
+}

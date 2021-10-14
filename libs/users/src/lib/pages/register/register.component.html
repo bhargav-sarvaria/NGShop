@@ -1,0 +1,71 @@
+<div class="grid login-register h-100">
+    <div class="col-12 md:col-7 login-register-sidenav">
+        <div class="login-main-text mt-4 md:mt-8">
+            <h1><strong>Bombay Underground</strong></h1>
+            <h3><strong>Sign Up!</strong></h3>
+          </div>    
+    </div>
+    <div class="col-12 md:col-5 mt-4 md:mt-0 login-register-form">
+        <div style="width: 100%; padding:5% 10%;">
+            <form [formGroup] = "registerFormGroup" (ngSubmit)="onSubmit()">
+                
+                <div class="login-register-form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-input" formControlName = "name" placeholder="Name">
+                </div>
+
+                <div class="login-register-form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-input" formControlName = "email" placeholder="E-mail">
+                </div>
+
+                <div class="login-register-form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-input" formControlName = "password" placeholder="Password">
+                </div>
+
+                <div class="login-register-form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-input" formControlName = "confirmPassword" placeholder="Confirm  Password">
+                </div>
+
+                <div class="login-register-form-group">
+                    <label>Mobile Number</label>  
+                    <div style="position:relative;">
+                        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "10" style="padding-left: 62px;" type="number" spellcheck="false" class="form-input" formControlName="phone" placeholder="">
+                        <span class="form-input-span">+91<span style="padding: 0px 10px 0px 5px; position: relative; bottom: 1px;">|</span></span>
+                    </div>
+                </div>
+
+                <div class="login-register-form-group">
+                    <label>Address Line 1</label>
+                    <input type="text" class="form-input" formControlName = "addressLine1" placeholder="Address Line 1">
+                </div>
+
+                <div class="login-register-form-group">
+                    <label>Address Line 2</label>
+                    <input type="text" class="form-input" formControlName = "addressLine2" placeholder="Address Line 2">
+                </div>
+
+                <div class="login-register-form-group">
+                    <label>Zip</label>
+                    <input type="text" class="form-input" formControlName = "zip" placeholder="Zip Code">
+                </div>
+
+                <div class="login-register-form-group">
+                    <p-checkbox [binary]="true" [formControl]="$any(registerFormGroup).controls['terms']" label="I agree to the license terms."></p-checkbox>
+                </div>
+
+                <button [title]="getFormMessage()" type="submit"  class="btn-primary btn">Sign Up</button>
+                
+            </form>
+            <br>
+            <span class="error-message" *ngIf="authMessage!==''">
+                {{authMessage}}
+            </span>
+            <p>Already Registered ? <a href="/login">Login here</a></p>
+        </div>
+    </div>
+</div>

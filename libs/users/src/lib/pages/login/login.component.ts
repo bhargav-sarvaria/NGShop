@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { LocalstorageService } from '../../services/localstorage.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthGuard } from '../../services/auth-guard.service';
 
 @Component({
   selector: 'users-login',
@@ -15,17 +16,21 @@ import { takeUntil } from 'rxjs/operators';
 export class LoginComponent implements OnInit, OnDestroy {
 
   loginFormGroup: FormGroup;
-  isSubmitted = false;
   authError = false;
-  authMessage = "email or password is wrong";
+  authMessage = '';
   endsubs$: Subject<any> = new Subject();
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private authGuardService: AuthGuard,
     private localStorageService: LocalstorageService,
     private router: Router
-  ) { }
+  ) {
+    if(!this.authGuardService.isAdmin() && this.authGuardService.isAdmin()!=null){
+      this.displayNotAdmin();
+    }
+  }
 
   ngOnInit(): void {
     this._initLoginForm();
@@ -36,9 +41,18 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.endsubs$.complete();
   }
 
+  private displayNotAdmin(){
+    this.setAuthMessage(true, 'You do not have admin access!');
+  }
+
+  private setAuthMessage(error: boolean, message: string){
+    this.authError = error;
+    this.authMessage = message;
+  }
+
   private _initLoginForm(){
     this.loginFormGroup = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       password: ['', Validators.required]
     })
   }
@@ -48,20 +62,27 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
-    this.isSubmitted = true;
     if(this.loginFormGroup.invalid) return;
-    this.isSubmitted = false;
+    this.setAuthMessage(false, '');
 
-    this.authService.login(this.loginForm.email.value, this.loginForm.password.value).pipe(takeUntil(this.endsubs$)).subscribe( (user) => {
-      this.authError = false;
-      this.localStorageService.setToken(user.token);
-      this.router.navigate(['/']);
+    this.authService.login(this.loginForm.phone.value, this.loginForm.password.value).pipe(takeUntil(this.endsubs$)).subscribe( (user) => {
+      if(!user.token){
+        this.setAuthMessage(true, user);
+      } else{
+        this.setAuthMessage(false, '');
+        this.localStorageService.setToken(user.token);
+        if(this.authGuardService.isAdmin()){
+          this.router.navigate(['/']);
+        }else{
+          this.displayNotAdmin();
+        }
+        
+      }
     }, (error) => {
-      this.authError = true;
       if(error.status != 400){
-        this.authMessage = 'Error in the server, please try again later!';
+        this.setAuthMessage(true, 'Error in the server, please try again later!');
       }else{
-        this.authMessage = error.error;
+        this.setAuthMessage(true, error.error);
       }
     });
   }
