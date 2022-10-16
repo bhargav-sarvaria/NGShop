@@ -7,10 +7,7 @@
             <div>
                 <h4>My Cart: {{ cartCount }} Item(s)</h4>
             </div>
-            <div class="cart-shipping mb-5">
-                Some text here. awndiqwenfoiuqerfiwuber fwermo wnvpiw pifvuh iniowe oiuen icneoic noecoi unaci ahecia uoyc ac.
-            </div>
-            <div class="cart-item mb-5" *ngFor = "let cartItem of cartItemsDetailed">
+            <div class="cart-item mb-5" *ngFor="let cartItem of cartItemsDetailed">
                 <div class="grid p-fluid">
                     <div class="col-2 cart-item-image">
                         <img [src]="cartItem.product.image" [attr.alt]="cartItem.product.name" />
@@ -24,20 +21,15 @@
                     </div>
                     <div class="col-3">
                         <div class="field cart-item-quantity">
-                            <p-inputNumber
-                              mode="decimal"
-                              [showButtons]="true"
-                              [inputId]="cartItem.product.id"
-                              [min]="0"
-                              [max]="100"
-                              [(ngModel)] = "cartItem.quantity"
-                              (onInput) = "updateCartItemQuantity($event, cartItem)"
-                            >
+                            <p-inputNumber mode="decimal" [showButtons]="true" [inputId]="cartItem.product.id" [min]="0"
+                                [max]="100" [(ngModel)]="cartItem.quantity"
+                                (onInput)="updateCartItemQuantity($event, cartItem)">
                             </p-inputNumber>
                         </div>
                         <div class="cart-item-subtotal">
                             Subtotal:
-                            <span class="cart-item-subtotal-value">{{cartItem.product.price * cartItem.quantity | currency: 'INR'}}</span>
+                            <span class="cart-item-subtotal-value">{{cartItem.product.price * cartItem.quantity |
+                                currency: 'INR'}}</span>
                         </div>
                     </div>
                 </div>

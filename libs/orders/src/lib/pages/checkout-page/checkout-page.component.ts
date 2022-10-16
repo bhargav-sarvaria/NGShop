@@ -31,7 +31,6 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._initCheckoutForm();
-    this._autoFillUserData();
     this._getCartItems();
     this._getCountries();
   }
@@ -52,6 +51,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
       apartment: ['', Validators.required],
       street: ['', Validators.required]
     });
+    this._autoFillUserData();
   }
 
   private _autoFillUserData() {

@@ -3,11 +3,11 @@
         <div class="login-main-text mt-4 md:mt-8">
             <h1><strong>Bombay Underground</strong></h1>
             <h3><strong>Login</strong></h3>
-          </div>    
+        </div>    
     </div>
     <div class="col-12 md:col-5 mt-4 md:mt-0 login-register-form">
         <div style="width: 100%; padding: 0 10%;">
-            <form [formGroup] = "loginFormGroup" (ngSubmit)="onSubmit()">
+            <form [formGroup] = "loginFormGroup" (ngSubmit)="getOTP()">
                 <div class="login-register-form-group">
                     <label>Mobile Number</label>  
                     <div style="position:relative;">
@@ -18,11 +18,21 @@
                     </div>              
                     
                 </div>
-                <div class="login-register-form-group">
+                <div class="login-register-form-group" *ngIf="false">
                     <label>Password</label>
                     <input type="password" class="form-input" formControlName = "password" placeholder="Password">
                 </div>
-                <button type="submit" [disabled]="!loginFormGroup.valid" class="btn-primary btn">Login</button>
+                <div class="login-register-form-group" *ngIf = "showOtp">
+                    <label>Enter OTP</label>
+                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [ngModelOptions]="{standalone: true}" [config]="config"></ng-otp-input>
+                </div>
+                
+                <button *ngIf="!showOtp" type="submit" [disabled]="!loginFormGroup.valid" class="btn-primary btn">Submit</button>
+                <button *ngIf="showOtp" (click) = "submitOtp()" [disabled]="!loginFormGroup.valid" class="btn-primary btn">Verify OTP</button>
+                <!-- <button type="submit" [disabled]="!loginFormGroup.valid" class="btn-primary btn">Submit</button> -->
+                
+                <div id="sign-in-button"></div>
+
                 
             </form>
             <br>

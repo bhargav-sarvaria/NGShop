@@ -16,12 +16,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DropdownModule } from 'primeng/dropdown';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
-import { AuthGuard } from '@shreeshakti/users';
+import { AuthGuardEshop } from '@shreeshakti/users';
 
 
 export const ordersRoutes: Route[] = [
     {path: 'cart', component: CartPageComponent},
-    {path: 'checkout', component: CheckoutPageComponent, canActivate: [AuthGuard]},
+    {path: 'checkout', component: CheckoutPageComponent, canActivate: [AuthGuardEshop]},
     {path: 'success', component: ThankYouComponent}
 ];
 

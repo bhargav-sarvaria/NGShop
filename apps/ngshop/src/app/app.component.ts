@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from '@shreeshakti/users';
 
 @Component({
@@ -18,8 +19,12 @@ export class AppComponent implements OnInit {
   header;
   hide = false;
   @ViewChild('matSidenavContent') content: ElementRef;
+  route: string;
 
-  constructor(private usersService: UsersService){}
+  constructor(private usersService: UsersService, private router: Router){
+    this.route = router.url;
+    console.log(this.route);
+  }
 
   ngOnInit(): void{
 
@@ -60,5 +65,10 @@ export class AppComponent implements OnInit {
       this.header.classList.remove('hide');
       this.prevDirection = direction;
     }
+  }
+
+  toggleFooter(){
+    console.log('toggle footer');
+    console.log(event);
   }
 }

@@ -5,6 +5,11 @@
         margin: 0 auto;
         background-color: var(--surface-100);
 
+        &-content {
+            margin:0 9%;
+            padding-top: 30px;
+        }
+
         mat-sidenav{
         
             height: 100%;
@@ -25,7 +30,9 @@
 
         main {
             background-color: var(--surface-100);
-            margin: 120px 9% 0px  9%;
+            
+            min-height: calc(100% - 188px);
+            overflow-x: hidden;
         }
 
         .site-header {
@@ -38,8 +45,41 @@
         .hide {
             top: -101px;
         }
+
+
     }
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .home-page-container {
+        main{
+            margin-top: 62px;
+        }
+        
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .home-page-container {
+        main {
+            margin-top: 62px;
+        }
+        
+    }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .home-page-container {
+        main {
+            margin-top: 87px;
+        }
+        
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
 
 

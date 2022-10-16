@@ -34,4 +34,12 @@ export class AuthService {
     this.localStorageService.removeToken();
     this.router.navigate(['/login']);
   }
+
+  phoneNumberExists(phone: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.apiURLUsers}/phoneNumberExists`, {phone: phone});  
+  }
+
+  loginWithOtp(phone: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.apiURLUsers}/loginWithOtp`, {phone: phone});  
+  }
 }

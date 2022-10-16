@@ -1,16 +1,16 @@
-
 <div class="side-nav-bar">
     <div class="grid">
         <div class="col-12 side-nav-bar-logo">
-            <p>Devanshi Creation</p>
+            <p>Eshop</p>
         </div>
         <div class="col-12 side-nav-bar-search">
-            <products-search (searchResults) = "toggleSearchResults($event)" (sidenavClose) = "onSidenavClose()" class = "products-search"></products-search>
+            <products-search (searchResults)="toggleSearchResults($event)" (sidenavClose)="onSidenavClose()"
+                class="products-search"></products-search>
         </div>
         <div class="col-12 grid side-nav-bar-categories" *ngIf="!hasSearchResults">
-            <div class="col"><a (click) = "onSidenavClose()" routerLink="/">Home</a></div>
-            <div class="col"><a (click) = "onSidenavClose()" routerLink="/products">Products</a></div>
-            <div class="col"><a (click) = "onSidenavClose()" routerLink="/">Contact</a></div>
+            <div class="col"><a (click)="onSidenavClose()" routerLink="/">Home</a></div>
+            <div class="col"><a (click)="onSidenavClose()" routerLink="/products">Products</a></div>
+            <div class="col"><a (click)="onSidenavClose()" routerLink="/">Contact</a></div>
         </div>
     </div>
 </div>

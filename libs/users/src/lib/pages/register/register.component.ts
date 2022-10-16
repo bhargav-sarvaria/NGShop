@@ -70,7 +70,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
-    console.log(this.registerForm.terms.value)
     if(this.registerFormGroup.invalid){
       this.authError = true;
       this.authMessage = this.getFormMessage();

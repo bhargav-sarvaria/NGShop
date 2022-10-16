@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 const TOKEN = 'jwtToken';
+const FIREBASE = 'FIREBASE_USER_DATA';
+const OTP_COUNT = 'OTP_COUNT';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +47,19 @@ export class LocalstorageService {
     return Math.floor( new Date().getTime() / 1000 ) >=expiration;
   }
 
-  
+  setFirebaseUserData(value: string){
+    localStorage.setItem(FIREBASE, value)
+  }
+
+  getFirebaseUserData(){
+    return JSON.parse(localStorage.getItem(FIREBASE));
+  }
+
+  setItem(key: string, value: string){
+    localStorage.setItem(key, value);
+  }
+
+  getItem(key: string){
+    return localStorage.getItem(key);
+  }
 }

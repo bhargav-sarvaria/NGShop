@@ -1,0 +1,102 @@
+<div class="login-register-eshop">
+    <div class="grid mx-4 md:mx-0">
+        <div class="col-12  md:col-4 md:col-offset-4 login-register-eshop-form animate__animated" *ngIf="!isRegister" >
+            <div style="height: 100%; width: 100%; padding: 0 10%;">
+                <h1 class="login-register-eshop-form-heading">
+                    Login or Signup
+                </h1>
+
+                <form [formGroup] = "loginFormGroup">
+                    <div class="login-register-eshop-form-group">
+                        <label>Mobile Number</label>  
+                        <div style="position:relative;">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number"
+                            maxlength = "10" style="padding-left: 62px;" type="number" spellcheck="false" class="form-input" formControlName="phone" placeholder="">
+                            <span class="form-input-span">+91<span style="padding: 0px 10px 0px 5px; position: relative; bottom: 1px;">|</span></span>
+                        </div>              
+                    </div>
+                    
+                    <div class="login-register-eshop-form-group animate__animated animate__fadeInUp" *ngIf = "showOtp">
+                        <label>Enter OTP</label>
+                        <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [ngModelOptions]="{standalone: true}" [config]="firebaseOtpConfig"></ng-otp-input>
+                    </div>
+
+                    <p *ngIf= "!showOtp" class="mt-6 mb-4" style="font-size: 0.75em;">By continuing, i agree to all the <span style="color: #FF3A00;">terms & conditions</span></p> 
+                    
+                    <button *ngIf="!showOtp" (click)="sendOTP()" [disabled]="!loginFormGroup.valid" class="btn-primary btn w-100">Submit</button>
+                    <button *ngIf="showOtp" (click) = "submitOtp()" class="btn-primary btn">Verify OTP</button>  
+                    <p *ngIf= "timeLeft > 0" class= "login-register-eshop-form-timer">Resend OTP in {{timeLeft}}s </p>
+                    <p *ngIf= "showOtp && timeLeft === 0" class= "login-register-eshop-form-link" (click) = "sendOTP()" >Resend OTP</p> 
+                    <div id="sign-in-button"></div>
+                </form>            
+                <br>
+                <span class="error-message" *ngIf="authMessage!==''">
+                    {{authMessage}}
+                </span>
+            </div>
+        </div>
+
+        <div class="col-12  md:col-4 md:col-offset-4 login-register-eshop-form animate__animated animate__fadeInRight" *ngIf="isRegister" >
+            <div style="height: 100%; width: 100%; padding: 0 10%;">
+                <h1 class="login-register-eshop-form-heading">
+                    Sign Up
+                </h1>
+                
+                <form [formGroup] = "registerFormGroup" (ngSubmit)="registerUser()">
+                    <div class="login-register-eshop-form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-input" formControlName = "name" placeholder="Name">
+                    </div>
+                
+                    <div class="login-register-eshop-form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-input" formControlName = "email" placeholder="E-mail">
+                    </div>
+                
+                    <div class="login-register-eshop-form-group">
+                        <label>Mobile Number</label>  
+                        <div style="position:relative;">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number"
+                            maxlength = "10" style="padding-left: 62px;" type="number" spellcheck="false" class="form-input" formControlName="phone" placeholder="">
+                            <span class="form-input-span">+91<span style="padding: 0px 10px 0px 5px; position: relative; bottom: 1px;">|</span></span>
+                        </div>
+                    </div>
+
+                    <div class="login-register-eshop-form-group">
+                        <label>City</label>
+                        <p-dropdown class="dropdown" [options]="cities" formControlName="city"></p-dropdown>
+                    </div>
+                
+                    <div class="login-register-eshop-form-group">
+                        <label>Address Line 1</label>
+                        <input type="text" class="form-input" formControlName = "addressLine1" placeholder="Address Line 1">
+                    </div>
+                
+                    <div class="login-register-eshop-form-group">
+                        <label>Address Line 2</label>
+                        <input type="text" class="form-input" formControlName = "addressLine2" placeholder="Address Line 2">
+                    </div>
+                
+                    <div class="login-register-eshop-form-group">
+                        <label>Zip</label>
+                        <input type="text" class="form-input" formControlName = "zip" placeholder="Zip Code">
+                    </div>
+                
+                    <div class="login-register-eshop-form-group">
+                        <p-checkbox [binary]='true' [formControl]="$any(registerFormGroup).controls['terms']" label="I agree to the license terms."></p-checkbox>
+                    </div>
+                
+                    <button class="w-100" [disabled]="registerFormGroup.invalid" [title]="getRegisterFormMessage()" type="submit"  class="btn-primary btn">Sign Up</button>
+                </form>
+                <br>
+                <span class="error-message" *ngIf="authMessage!==''">
+                    {{authMessage}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
