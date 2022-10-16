@@ -1,42 +1,45 @@
-<div class="login-register">
-    <div class="login-register-panel">
-        <div class="grid">
-            <div class="col-6">
-                <img src="assets/images/login-photo.png" alt="">
-            </div>
-            <div class="col-6 p-5">
-                <h3>Welcome!</h3>
-                <h2>Login Page</h2>
-                <form [formGroup] = "loginFormGroup">
-                    <div class="grid mt-6">
-                        <div class="col-12">
-                            <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                <input formControlName="email" type="text" pInputText placeholder="Username">    
-                            </div>
-                            <small *ngIf="loginForm.email.invalid && isSubmitted" class="p-error">
-                                <span *ngIf="loginForm.email.errors.required">email is required</span>
-                                <span *ngIf="loginForm.email.errors.email">email is invalid</span>
-                            </small>
-                        </div>
-                        <div class="col-12">
-                            <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                                <input formControlName="password" type="text" pInputText placeholder="Password">  
-                            </div>
-                            <small *ngIf="loginForm.password.invalid && isSubmitted" class="p-error">
-                                <span *ngIf="loginForm.email.errors.required">password is required</span>
-                            </small>   
-                        </div>
-                        <div class="col-12">
-                            <p-button (onClick) = "onSubmit()" label="Submit" styleClass="full-btn"></p-button>
-                        </div>
-                        <div class="col-12" *ngIf="authError">
-                            <small class="p-error">{{authMessage}}</small>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<div class="grid login-register h-100">
+    <div class="col-12 md:col-7 login-register-sidenav">
+        <div class="login-main-text mt-4 md:mt-8">
+            <h1><strong>Bombay Underground</strong></h1>
+            <h3><strong>Login</strong></h3>
+        </div>    
+    </div>
+    <div class="col-12 md:col-5 mt-4 md:mt-0 login-register-form">
+        <div style="width: 100%; padding: 0 10%;">
+            <form [formGroup] = "loginFormGroup" (ngSubmit)="getOTP()">
+                <div class="login-register-form-group">
+                    <label>Mobile Number</label>  
+                    <div style="position:relative;">
+                        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "10" style="padding-left: 62px;" type="number" spellcheck="false" class="form-input" formControlName="phone" placeholder="">
+                        <span class="form-input-span">+91<span style="padding: 0px 10px 0px 5px; position: relative; bottom: 1px;">|</span></span>
+                    </div>              
+                    
+                </div>
+                <div class="login-register-form-group" *ngIf="false">
+                    <label>Password</label>
+                    <input type="password" class="form-input" formControlName = "password" placeholder="Password">
+                </div>
+                <div class="login-register-form-group" *ngIf = "showOtp">
+                    <label>Enter OTP</label>
+                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [ngModelOptions]="{standalone: true}" [config]="config"></ng-otp-input>
+                </div>
+                
+                <button *ngIf="!showOtp" type="submit" [disabled]="!loginFormGroup.valid" class="btn-primary btn">Submit</button>
+                <button *ngIf="showOtp" (click) = "submitOtp()" [disabled]="!loginFormGroup.valid" class="btn-primary btn">Verify OTP</button>
+                <!-- <button type="submit" [disabled]="!loginFormGroup.valid" class="btn-primary btn">Submit</button> -->
+                
+                <div id="sign-in-button"></div>
+
+                
+            </form>
+            <br>
+            <span class="error-message" *ngIf="authMessage!==''">
+                {{authMessage}}
+            </span>
+            <p>Not signed-up ? <a href="/register">Register here</a></p>
         </div>
     </div>
 </div>

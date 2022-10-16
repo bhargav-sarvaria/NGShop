@@ -9,7 +9,7 @@ import { CartService } from '../../services/cart.service';
 import { OrdersService } from '../../services/orders.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { StripeService } from 'ngx-stripe';
+
 @Component({
   selector: 'orders-checkout-page',
   templateUrl: './checkout-page.component.html'
@@ -31,7 +31,6 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._initCheckoutForm();
-    this._autoFillUserData();
     this._getCartItems();
     this._getCountries();
   }
@@ -52,6 +51,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
       apartment: ['', Validators.required],
       street: ['', Validators.required]
     });
+    this._autoFillUserData();
   }
 
   private _autoFillUserData() {

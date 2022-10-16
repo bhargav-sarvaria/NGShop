@@ -31,9 +31,6 @@ const routes: Routes = [
             { path: 'orders/form', component: OrdersDetailComponent },
             { path: 'orders/form/:id', component: OrdersDetailComponent}
         ]
-    },
-    {
-        path: '**', redirectTo: '', pathMatch: 'full'
     }
 ];
 

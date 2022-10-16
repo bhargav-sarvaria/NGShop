@@ -1,0 +1,201 @@
+.login-register-eshop {
+
+    background: #f46b45;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eea9497a, #f46b457c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eea94980, #f46b4580); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 50px 0;
+    
+
+    .grid{
+        height: 100%;
+        min-height: calc(100vh - 187px);
+        margin-top: 0;
+    }
+    
+    
+    &-form {
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding:0px;
+
+        &-heading {
+            margin: 50px 0 !important;
+            color: var(--surface-700);
+
+        }
+
+        &-content {
+            padding: 0 15%;
+        }
+
+        &-group {
+            margin-bottom: 25px;
+
+            label {
+                color: #333333;
+                display: inline-block;
+                max-width: 100%;
+                margin-bottom: 5px;
+                font-weight: 700;
+            }
+
+            .dropdown {
+                margin-top: 5px;
+                display: block;
+
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+        }
+
+        
+
+        .form-input {
+            transition: all 0.2s ease-out;
+            color: #333333;
+            border: 1px solid #d9d9d9;
+            background-clip: padding-box;
+            border-radius: 5px;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.5em 0.8em;
+            word-break: normal;
+            margin: 5px 0 0 0;
+            appearance: none;
+            background: transparent;
+            letter-spacing: normal;
+            word-spacing: normal;
+        
+            &:focus{
+                outline: none;
+                border: 1px solid $primary-color;
+                -webkit-box-shadow: 0 0 0 1px $primary-color;
+                box-shadow: 0 0 0 1px $primary-color;
+                transition: all 0.2s ease-out;
+                color: #333333;
+            }
+        }
+
+        input.form-control.ng-invalid.ng-touched {
+            border-color: red;
+            box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+        }
+
+        .form-input-span {
+            position: absolute;
+            padding: 0.5em 0.8em;
+            left: 2px;
+            margin-top: 5px;
+            color: #a9a9a9;
+            border: 1px solid transparent;
+        }
+
+        ng-otp-input {
+            input {
+                &:focus-visible {
+                    border: 2px solid $primary-color !important; 
+                    outline: none;
+                }
+
+                &:hover {
+                    border: 1px solid $primary-color; 
+                    outline: none;
+                }
+            }
+        }
+
+        .error-message {
+            color: red;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+
+            &-primary {
+                color: white;
+                background-color: $primary-color;
+
+                &:hover {
+                    background-color: $primary-color-dark;
+                    color: white;
+                    transition: background-color 0.2s
+
+                }
+
+                &:disabled{
+                    cursor: not-allowed;
+                    background-color: var(--surface-500);
+                    color:white;
+                }
+            }
+        }
+
+        &-timer {
+            font-size: 0.75rem;
+            display: inline;
+            margin-left: 10px !important;
+        }
+
+        &-link {
+            font-weight: bold;
+            color: $primary-color;
+            font-size: 0.75rem;
+            cursor: pointer;
+            margin-left: 10px !important;
+            display: inline-block;
+        }
+    }
+
+    .p-checkbox {
+        .p-checkbox-box{
+            // border: unset;
+            // border:2px solid $primary-color-dark;
+        }
+        
+    }
+}
+// /* Extra small devices (phones, 600px and down) */
+// @media only screen and (max-width: 600px) {
+//     .login-register-eshop {
+//         height: calc(100vh - 63px);
+//     }
+// }
+// /* Small devices (portrait tablets and large phones, 600px and up) */
+// @media only screen and (min-width: 600px) { 
+//     .login-register-eshop {
+//         height: calc(100vh - 63px);
+//     }
+// }
+// /* Medium devices (landscape tablets, 768px and up) */
+// @media only screen and (min-width: 768px) {
+//     .login-register-eshop {
+//         height: calc(100vh - 88px);
+//     }
+// }
+// /* Large devices (laptops/desktops, 992px and up) */
+// @media only screen and (min-width: 992px) {}
+// /* Extra large devices (large laptops and desktops, 1200px and up) */
+// @media only screen and (min-width: 1200px) {}

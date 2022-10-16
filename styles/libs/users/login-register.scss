@@ -1,16 +1,161 @@
 .login-register {
-    background-image: linear-gradient(235deg, #565867, #191a25);
-    height: 100vh;
-    &-panel {
-        width: 650px;
-        height: 525px;
-        background-color: var(--surface-a);
-        position: absolute;
-        left: calc(50% - 325px);
-        top: calc(50% - 260px);
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+
+    &-sidenav {
+        background-color: $primary-color;
+        overflow: hidden;
+
+        .login-main-text{
+            padding: 60px;
+            color: #fff;
+        }
         
-        .full-btn {
-            width: 100%;
+        .login-main-text h2{
+            font-weight: 300;
         }
     }
+
+    &-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-group {
+            margin-bottom: 25px;
+
+            label {
+                color: #333333;
+                display: inline-block;
+                max-width: 100%;
+                margin-bottom: 5px;
+                font-weight: 700;
+            }
+        }
+
+        
+
+        .form-input {
+            transition: all 0.2s ease-out;
+            color: #333333;
+            border: 1px solid #d9d9d9;
+            background-clip: padding-box;
+            border-radius: 5px;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.5em 0.8em;
+            word-break: normal;
+            margin: 5px 0 0 0;
+            appearance: none;
+            background: transparent;
+            letter-spacing: normal;
+            word-spacing: normal;
+        
+            &:focus{
+                outline: none;
+                border: 1px solid $primary-color;
+                -webkit-box-shadow: 0 0 0 1px $primary-color;
+                box-shadow: 0 0 0 1px $primary-color;
+                transition: all 0.2s ease-out;
+                color: #333333;
+            }
+        }
+
+        input.form-control.ng-invalid.ng-touched {
+            border-color: red;
+            box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+        }
+
+        .form-input-span {
+            position: absolute;
+            padding: 0.5em 0.8em;
+            left: 2px;
+            margin-top: 5px;
+            color: #a9a9a9;
+            border: 1px solid transparent;
+        }
+
+        ng-otp-input {
+            input {
+                &:focus-visible {
+                    border: 2px solid $primary-color !important; 
+                    outline: none;
+                }
+
+                &:hover {
+                    border: 1px solid $primary-color; 
+                    outline: none;
+                }
+            }
+        }
+
+        .error-message {
+            color: red;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+
+            &-primary {
+                color: white;
+                background-color: $primary-color;
+
+                &:hover {
+                    background-color: $primary-color-dark;
+                    color: white;
+                    transition: background-color 0.2s
+
+                }
+
+                &:disabled{
+                    cursor: not-allowed;
+                    background-color: var(--surface-500);
+                    color:white;
+                }
+            }
+        }
+    }
+
+    .p-checkbox {
+        .p-checkbox-box{
+            // border: unset;
+            // border:2px solid $primary-color-dark;
+        }
+        
+    }
 }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .login-register {height: 100%;position: absolute;}
+    .login-main-text {position: fixed;}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

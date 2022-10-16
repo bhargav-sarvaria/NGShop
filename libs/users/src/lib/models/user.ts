@@ -11,4 +11,6 @@ export class User {
     zip?: string;
     city?: string;
     country?: string;
+    addressLine1?: string;
+    addressLine2?: string;
 }

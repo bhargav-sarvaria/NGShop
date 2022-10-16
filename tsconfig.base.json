@@ -16,6 +16,7 @@
         "baseUrl": ".",
         "paths": {
             "@env/*": ["environments/*"],
+            "@shreeshakti/environment": ["libs/environment/src/index.ts"],
             "@shreeshakti/orders": ["libs/orders/src/index.ts"],
             "@shreeshakti/products": ["libs/products/src/index.ts"],
             "@shreeshakti/ui": ["libs/ui/src/index.ts"],

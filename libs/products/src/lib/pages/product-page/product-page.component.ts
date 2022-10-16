@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem, CartService } from '@shreeshakti/orders';
 import { Subject } from 'rxjs';
@@ -12,7 +12,7 @@ import { ProductsService } from '../../services/products.service';
   styles: [
   ]
 })
-export class ProductPageComponent implements OnInit, OnDestroy {
+export class ProductPageComponent implements  OnDestroy {
 
   productId: string;
   product: Product;
@@ -30,9 +30,6 @@ export class ProductPageComponent implements OnInit, OnDestroy {
         this._getProduct(this.productId);
       }
     })
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
